@@ -1,1 +1,337 @@
+Ejercicio 1
+
+using System;
+using System.Collections.Generic;
+
+namespace AsignaturasCurso
+{
+    // Clase que representa el curso con sus asignaturas
+    public class Curso
+    {
+        // Propiedad para almacenar las asignaturas
+        private List<string> asignaturas;
+
+        // Constructor para inicializar la lista de asignaturas
+        public Curso()
+        {
+            asignaturas = new List<string>();
+        }
+
+        // Método para agregar una asignatura
+        public void AgregarAsignatura(string asignatura)
+        {
+            asignaturas.Add(asignatura);
+        }
+
+        // Método para mostrar las asignaturas por pantalla
+        public void MostrarAsignaturas()
+        {
+            Console.WriteLine("Asignaturas del curso:");
+            foreach (var asignatura in asignaturas)
+            {
+                Console.WriteLine($"- {asignatura}");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase Curso
+            Curso curso = new Curso();
+
+            // Agregar asignaturas al curso
+            curso.AgregarAsignatura("Matemáticas");
+            curso.AgregarAsignatura("Física");
+            curso.AgregarAsignatura("Química");
+            curso.AgregarAsignatura("Historia");
+            curso.AgregarAsignatura("Lengua");
+
+            // Mostrar las asignaturas por pantalla
+            curso.MostrarAsignaturas();
+
+            // Mantener la consola abierta hasta que se presione una tecla
+            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+Ejercicio 2
+using System;
+using System.Collections.Generic;
+
+namespace AsignaturasCurso
+{
+    // Clase que representa el curso con sus asignaturas
+    public class Curso
+    {
+        // Propiedad para almacenar las asignaturas
+        private List<string> asignaturas;
+
+        // Constructor para inicializar la lista de asignaturas
+        public Curso()
+        {
+            asignaturas = new List<string>();
+        }
+
+        // Método para agregar una asignatura
+        public void AgregarAsignatura(string asignatura)
+        {
+            asignaturas.Add(asignatura);
+        }
+
+        // Método para mostrar las asignaturas con el mensaje "Yo estudio <asignatura>"
+        public void MostrarAsignaturas()
+        {
+            foreach (var asignatura in asignaturas)
+            {
+                Console.WriteLine($"Yo estudio {asignatura}");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase Curso
+            Curso curso = new Curso();
+
+            // Agregar asignaturas al curso
+            curso.AgregarAsignatura("Matemáticas");
+            curso.AgregarAsignatura("Física");
+            curso.AgregarAsignatura("Química");
+            curso.AgregarAsignatura("Historia");
+            curso.AgregarAsignatura("Lengua");
+
+            // Mostrar las asignaturas con el mensaje personalizado
+            curso.MostrarAsignaturas();
+
+            // Mantener la consola abierta hasta que se presione una tecla
+            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+Ejercicio 3
+using System;
+using System.Collections.Generic;
+
+namespace AsignaturasCurso
+{
+    // Clase que representa el curso con sus asignaturas y notas
+    public class Curso
+    {
+        // Propiedad para almacenar las asignaturas
+        private List<string> asignaturas;
+        // Propiedad para almacenar las notas correspondientes
+        private List<float> notas;
+
+        // Constructor para inicializar las listas
+        public Curso()
+        {
+            asignaturas = new List<string>();
+            notas = new List<float>();
+        }
+
+        // Método para agregar una asignatura
+        public void AgregarAsignatura(string asignatura)
+        {
+            asignaturas.Add(asignatura);
+        }
+
+        // Método para pedir las notas al usuario
+        public void PedirNotas()
+        {
+            for (int i = 0; i < asignaturas.Count; i++)
+            {
+                Console.Write($"¿Qué nota has sacado en {asignaturas[i]}? ");
+                float nota;
+                while (!float.TryParse(Console.ReadLine(), out nota) || nota < 0 || nota > 10)
+                {
+                    Console.Write("Por favor, ingresa una nota válida entre 0 y 10: ");
+                }
+                notas.Add(nota);
+            }
+        }
+
+        // Método para mostrar las asignaturas y las notas
+        public void MostrarNotas()
+        {
+            for (int i = 0; i < asignaturas.Count; i++)
+            {
+                Console.WriteLine($"En {asignaturas[i]} has sacado {notas[i]}");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase Curso
+            Curso curso = new Curso();
+
+            // Agregar asignaturas al curso
+            curso.AgregarAsignatura("Matemáticas");
+            curso.AgregarAsignatura("Física");
+            curso.AgregarAsignatura("Química");
+            curso.AgregarAsignatura("Historia");
+            curso.AgregarAsignatura("Lengua");
+
+            // Pedir las notas al usuario
+            curso.PedirNotas();
+
+            // Mostrar las asignaturas con las notas
+            curso.MostrarNotas();
+
+            // Mantener la consola abierta hasta que se presione una tecla
+            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+Ejercicio 4
+using System;
+using System.Collections.Generic;
+
+namespace LoteriaPrimitiva
+{
+    // Clase que representa la Lotería Primitiva
+    public class Loteria
+    {
+        // Lista para almacenar los números ganadores
+        private List<int> numerosGanadores;
+
+        // Constructor para inicializar la lista
+        public Loteria()
+        {
+            numerosGanadores = new List<int>();
+        }
+
+        // Método para pedir los números ganadores al usuario
+        public void PedirNumeros()
+        {
+            Console.WriteLine("Introduce los números ganadores de la Lotería Primitiva:");
+            for (int i = 0; i < 6; i++) // Suponiendo que hay 6 números ganadores
+            {
+                int numero;
+                bool valido = false;
+                while (!valido)
+                {
+                    Console.Write($"Introduce el {i + 1}º número ganador: ");
+                    if (int.TryParse(Console.ReadLine(), out numero) && numero >= 1 && numero <= 49 && !numerosGanadores.Contains(numero))
+                    {
+                        numerosGanadores.Add(numero);
+                        valido = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Número inválido o repetido. Debe ser entre 1 y 49 y no repetirse.");
+                    }
+                }
+            }
+        }
+
+        // Método para mostrar los números ganadores ordenados
+        public void MostrarNumerosOrdenados()
+        {
+            numerosGanadores.Sort(); // Ordenar los números de menor a mayor
+            Console.WriteLine("\nNúmeros ganadores ordenados de menor a mayor:");
+            foreach (var numero in numerosGanadores)
+            {
+                Console.WriteLine(numero);
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase Loteria
+            Loteria loteria = new Loteria();
+
+            // Pedir los números ganadores al usuario
+            loteria.PedirNumeros();
+
+            // Mostrar los números ganadores ordenados
+            loteria.MostrarNumerosOrdenados();
+
+            // Mantener la consola abierta hasta que se presione una tecla
+            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+Ejercicio 5 
+using System;
+using System.Collections.Generic;
+
+namespace NumerosOrdenInverso
+{
+    // Clase que maneja los números
+    public class Numeros
+    {
+        // Lista para almacenar los números
+        private List<int> numeros;
+
+        // Constructor para inicializar la lista
+        public Numeros()
+        {
+            numeros = new List<int>();
+        }
+
+        // Método para llenar la lista con números del 1 al 10
+        public void LlenarNumeros()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                numeros.Add(i);
+            }
+        }
+
+        // Método para mostrar los números en orden inverso
+        public void MostrarNumerosEnOrdenInverso()
+        {
+            numeros.Reverse(); // Invertir el orden de los números
+            Console.WriteLine("Números en orden inverso:");
+            Console.WriteLine(string.Join(", ", numeros)); // Mostrar los números separados por comas
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase Numeros
+            Numeros numeros = new Numeros();
+
+            // Llenar la lista con los números del 1 al 10
+            numeros.LlenarNumeros();
+
+            // Mostrar los números en orden inverso
+            numeros.MostrarNumerosEnOrdenInverso();
+
+            // Mantener la consola abierta hasta que se presione una tecla
+            Console.WriteLine("\nPresione cualquier tecla para salir...");
+            Console.ReadKey();
+        }
+    }
+}
 
